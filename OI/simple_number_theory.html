@@ -1,0 +1,300 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>简单数论 | ohEPse</title><meta name="author" content="ohEPse"><meta name="copyright" content="ohEPse"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="四中不教数论，只好用九中的进度来学习了 upd 11.18 终于开始教数论力！！！！1.数论基础2.质数2.1 质数的判定没什么好说的，幼儿园大班的知识。 什么？你说你不知道什么是质数？赶紧滚回去上幼儿园 kdw听了都要连夜跑过来打你 2.2 质数筛2.2.1 埃氏筛也不知道 $when how$ 老师 怎么教的，我一直以为这个叫欧拉筛。 原理：原理很简单，就是质数的倍数一定不是质数。所以我们就可">
+<meta property="og:type" content="website">
+<meta property="og:title" content="简单数论">
+<meta property="og:url" content="http://example.com/OI/simple_number_theory.html">
+<meta property="og:site_name" content="ohEPse">
+<meta property="og:description" content="四中不教数论，只好用九中的进度来学习了 upd 11.18 终于开始教数论力！！！！1.数论基础2.质数2.1 质数的判定没什么好说的，幼儿园大班的知识。 什么？你说你不知道什么是质数？赶紧滚回去上幼儿园 kdw听了都要连夜跑过来打你 2.2 质数筛2.2.1 埃氏筛也不知道 $when how$ 老师 怎么教的，我一直以为这个叫欧拉筛。 原理：原理很简单，就是质数的倍数一定不是质数。所以我们就可">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/assets/protrait.jpeg">
+<meta property="article:published_time" content="2023-04-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-02T12:20:32.727Z">
+<meta property="article:author" content="ohEPse">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/assets/protrait.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/OI/simple_number_theory.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '简单数论',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-04-02 20:20:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/protrait.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">0</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/OI/"><i class="fa-fw fas fa-archive"></i><span> OI相关</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="ohEPse"><span class="site-name">ohEPse</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/OI/"><i class="fa-fw fas fa-archive"></i><span> OI相关</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">简单数论</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><h3 id="四中不教数论，只好用九中的进度来学习了"><a href="#四中不教数论，只好用九中的进度来学习了" class="headerlink" title="四中不教数论，只好用九中的进度来学习了"></a>四中不教数论，只好用九中的进度来学习了</h3><hr>
+<h2 id="upd-11-18-终于开始教数论力！！！！"><a href="#upd-11-18-终于开始教数论力！！！！" class="headerlink" title="upd 11.18 终于开始教数论力！！！！"></a>upd 11.18 终于开始教数论力！！！！</h2><h2 id="1-数论基础"><a href="#1-数论基础" class="headerlink" title="1.数论基础"></a>1.数论基础</h2><h2 id="2-质数"><a href="#2-质数" class="headerlink" title="2.质数"></a>2.质数</h2><h3 id="2-1-质数的判定"><a href="#2-1-质数的判定" class="headerlink" title="2.1 质数的判定"></a>2.1 质数的判定</h3><p>没什么好说的，幼儿园大班的知识。</p>
+<p>什么？你说你不知道什么是质数？<br><del>赶紧滚回去上幼儿园</del></p>
+<p>kdw听了都要连夜跑过来打你</p>
+<h3 id="2-2-质数筛"><a href="#2-2-质数筛" class="headerlink" title="2.2 质数筛"></a>2.2 质数筛</h3><h4 id="2-2-1-埃氏筛"><a href="#2-2-1-埃氏筛" class="headerlink" title="2.2.1 埃氏筛"></a>2.2.1 埃氏筛</h4><p>也不知道 $when how$ 老师 怎么教的，我一直以为这个叫欧拉筛。</p>
+<h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p>原理很简单，就是质数的倍数一定不是质数。所以我们就可以这样子求质数。</p>
+<p>时间复杂度大概是 $O(nlog(log n))$。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> isprime[maxn];</span><br><span class="line"><span class="built_in">memset</span>(isprime,<span class="number">1</span>,<span class="built_in">sizeof</span>(isprime));<span class="comment">//初始全为1，素数标记为0，合数标记为1</span></span><br><span class="line">isprime[<span class="number">2</span>]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=maxn;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!isprime[i])&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j*i&lt;=maxn;j++) isprime[i*j]=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-欧拉筛"><a href="#2-2-2-欧拉筛" class="headerlink" title="2.2.2 欧拉筛"></a>2.2.2 欧拉筛</h4><p>这才是正统欧拉筛</p>
+<h5 id="2-2-2-1-原理："><a href="#2-2-2-1-原理：" class="headerlink" title="2.2.2.1 原理："></a>2.2.2.1 原理：</h5><p>跟埃氏筛原理相似。但是埃氏筛有个问题：一个数可能被筛了很多次。欧拉筛保证了每个数只被筛一次，从而降低了时间复杂度。</p>
+<p>时间复杂度趋近于 $O(n)$ 。</p>
+<p>先贴代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> isprime[maxn],a[maxn],cnt=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">memset</span>(isprime,<span class="number">0</span>,<span class="built_in">sizeof</span>(isprime));<span class="comment">//初始全为0，素数标记为1，合数标记为0</span></span><br><span class="line"><span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="built_in">sizeof</span>(a));</span><br><span class="line">isprime[<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=maxn;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!isprime[i]) a[++cnt]=i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;i*a[j]&lt;=n;j++)&#123;</span><br><span class="line">        isprime[i*a[j]]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(i%a[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;	</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="2-2-2-2-欧拉筛的正确性："><a href="#2-2-2-2-欧拉筛的正确性：" class="headerlink" title="2.2.2.2 欧拉筛的正确性："></a>2.2.2.2 欧拉筛的正确性：</h5><p>对于 <code>if(i%a[j]==0) break;</code> 这句话，设 $i&#x3D;t<em>a[j]$ ,如果没有<code>break</code> 句，那么下一次循环会执行到 $i</em>a[j+1]$,可以化成 $t*a[j]*a[j+1]$ ，这个数已经是 $a[j]$ 的倍数，已经被筛过了，所以应该 <code>break</code> 。这句话确保了每个数不会被筛第二遍。</p>
+<p>通过下文约数的知识我们可以知道，任意正整数 $n$ 可以写为 $n&#x3D;\prod_{i &#x3D; 1}^{s}pi^{ki}$ ( $pi$ 为质数，$ki$ 为 $pi$ 的个数) , 同时筛数的时候表达式为 $i*a[j]$  ,所以不用担心漏筛。</p>
+<h1 id="3-约数"><a href="#3-约数" class="headerlink" title="3.约数"></a>3.约数</h1><p>我们知道任意一个数 $n$ 都可以被表示为<br>$n&#x3D;\prod_{i &#x3D; 1}^{s}pi^{ki}$ ( $pi$ 为质数，$ki$ 为 $pi$ 的个数)，然后我们就可以解决绝大部分关于约数的问题。</p>
+<h2 id="3-1-gcd-与-lcm"><a href="#3-1-gcd-与-lcm" class="headerlink" title="3.1 $gcd$ 与 $lcm$"></a>3.1 $gcd$ 与 $lcm$</h2><p>我们幼儿园大班就学过，$gcd(a,b)<em>lcm(a,b)&#x3D;a</em>b$ ，所以我们只需要用欧几里得求出 $gcd$ 便可以知道 $lcm$ 的值。</p>
+<p> $gcd$ 的 <code>?:</code> 三目运算符 写法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b?<span class="built_in">gcd</span>(b,a%b):a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了防止爆 $long long$ ,要写成 $lcm(a,b)&#x3D;a&#x2F;gcd(a,b)*b$</p>
+<h3 id="3-1-1-二进制算法"><a href="#3-1-1-二进制算法" class="headerlink" title="3.1.1 二进制算法"></a>3.1.1 二进制算法</h3><p>当 $gcd$ 的两个参数过大时，可以考虑通过不断除2来降低常数,这种方法又被称为更相减损术。</p>
+<p>case 1：$a$ 是偶数且 $b$ 是偶数，$gcd(a,b)&#x3D;gcd(a&#x2F;2,b&#x2F;2)$ ;</p>
+<p>case 2：$a$ 是偶数且 $b$ 是奇数，$gcd(a,b)&#x3D;gcd(a&#x2F;2,b)$ ;</p>
+<p>case 3：$a$ 是奇数且 $b$ 是偶数，$gcd(a,b)&#x3D;gcd(a,b&#x2F;2)$ ;</p>
+<p>case 4：$a$ 是奇数且 $b$ 是奇数，$gcd(a,b)&#x3D;gcd(a-b,b)$ ;</p>
+<p>由于很好理解，代码就先不贴了</p>
+<hr>
+<p>upd 2022.10.7</p>
+<p>昨天某个初一的小朋友帮我debug的时候看到我的 $gcd$ 并加以嘲笑，说这么写三目一看就是在压行装逼没没有什么用，还是他的非递归写法好。然后不知道为什么把我的约分函数当做 $gcd$ ，并再次痛斥 $gcd$ 不应该是取模吗为什么要除。</p>
+<p>发现自从上了初中接触了玄学竞赛以来，都是喊得 $gcd$ 或者 $lcm$ ，那位小盆友一口一个最大公约数差点把我听蒙了（悲）</p>
+<hr>
+<p>有什么还会回来补充的</p>
+<h2 id="4-欧拉定理"><a href="#4-欧拉定理" class="headerlink" title="4. 欧拉定理"></a>4. 欧拉定理</h2><h3 id="4-1-欧拉函数以及求法"><a href="#4-1-欧拉函数以及求法" class="headerlink" title="4.1 欧拉函数以及求法"></a>4.1 欧拉函数以及求法</h3><h4 id="4-1-1-欧拉函数-varphi-n-的定义"><a href="#4-1-1-欧拉函数-varphi-n-的定义" class="headerlink" title="4.1.1 欧拉函数 $\varphi(n)$ 的定义"></a>4.1.1 欧拉函数 $\varphi(n)$ 的定义</h4><p>$\varphi(n)$ 表示小于 $n$ 且与 $n$ 互质的正整数的个数。</p>
+<p>数学语言表达为为 $\varphi(n)&#x3D;|S|,S&#x3D;$ { $m|1\leq m &lt; n,gcd(m,n)&#x3D;1$}。</p>
+<p>计算式为 $\varphi(n)&#x3D;n*\prod_{i&#x3D;1}^{s}\frac{pi-1}{pi}$ ($pi$为$n$的质因数，$s$为$n$的质因数个数)。</p>
+<p>特别的，$\varphi(1)&#x3D;1$。</p>
+<h4 id="4-1-2-欧拉函数的性质"><a href="#4-1-2-欧拉函数的性质" class="headerlink" title="4.1.2 欧拉函数的性质"></a>4.1.2 欧拉函数的性质</h4><p>1.当 $n$ 为质数时，$\varphi(n)&#x3D;n-1$</p>
+<p>2.欧拉函数是积性函数，但不是完全积性函数。所以当 $gcd(a,b)&#x3D;1$ 时, $\varphi(ab)&#x3D;\varphi(a)\varphi(b)$</p>
+<p>3.当 $n$ 为奇数时，$\varphi(2n)&#x3D;\varphi(n)$</p>
+<p>4.当 $a$ % $b$ &#x3D;&#x3D; $0$ 时，$\varphi(ab)&#x3D;a\varphi(b)$  (这条定理个人没想明白怎么证的)</p>
+<p>5.当 $p$ 为质数时，$\varphi(p^k)&#x3D;p^k-p^{k-1}$</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/bcr_233/article/details/92227105">一些证明</a></p>
+<h3 id="4-1-3-欧拉函数的计算方法"><a href="#4-1-3-欧拉函数的计算方法" class="headerlink" title="4.1.3 欧拉函数的计算方法"></a>4.1.3 欧拉函数的计算方法</h3><h4 id="4-1-3-1-根据展开式，可以写出最简单的代码用来求单个数的-varphi-代码来源于oi-wiki"><a href="#4-1-3-1-根据展开式，可以写出最简单的代码用来求单个数的-varphi-代码来源于oi-wiki" class="headerlink" title="4.1.3.1 根据展开式，可以写出最简单的代码用来求单个数的  $\varphi$ (代码来源于oi-wiki)"></a>4.1.3.1 根据展开式，可以写出最简单的代码用来求单个数的  $\varphi$ (代码来源于oi-wiki)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">euler_phi</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> ans = n;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i * i &lt;= n; i++)</span><br><span class="line">    <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</span><br><span class="line">      ans = ans / i * (i - <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">while</span> (n % i == <span class="number">0</span>) n /= i;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">if</span> (n &gt; <span class="number">1</span>) ans = ans / n * (n - <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-1-3-2-筛法求欧拉函数"><a href="#4-1-3-2-筛法求欧拉函数" class="headerlink" title="4.1.3.2 筛法求欧拉函数"></a>4.1.3.2 筛法求欧拉函数</h5><p>我们可以通过欧拉筛同时求出欧拉函数值</p>
+<p>需要用到的三个性质：</p>
+<p>①当 $i$ 为质数时，$\varphi(i)&#x3D;i-1$</p>
+<p>②当 $a$ % $b$ &#x3D;&#x3D; $0$ 时，$\varphi(ab)&#x3D;a\varphi(b)$</p>
+<p>③当 $a$ % $b \neq 0$ 时，$\varphi(ab)&#x3D;\varphi(a)\varphi(b)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> prime[maxn],phi[maxn],p[maxn],cnt=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getphi</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(prime,<span class="number">1</span>,<span class="built_in">sizeof</span>(prime));</span><br><span class="line">	phi[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;maxn;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(prime[i])&#123;</span><br><span class="line">			p[++cnt]=i;</span><br><span class="line">			phi[i]=i<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;i*p[j]&lt;maxn;j++)&#123;</span><br><span class="line">			prime[i*p[j]]=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!(i%p[j]))&#123;</span><br><span class="line">				phi[i*p[j]]=phi[i]*p[j];</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				phi[i*p[j]]=phi[i]*phi[p[j]];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="4-2-欧拉定理-amp-费马小定理"><a href="#4-2-欧拉定理-amp-费马小定理" class="headerlink" title="4.2 欧拉定理&amp;费马小定理"></a>4.2 欧拉定理&amp;费马小定理</h3><h4 id="4-2-1-欧拉定理："><a href="#4-2-1-欧拉定理：" class="headerlink" title="4.2.1 欧拉定理："></a>4.2.1 欧拉定理：</h4><p>$a^{\varphi(n)} \equiv 1 \pmod n $ ,满足 $gcd(a,n)&#x3D;1$ 。</p>
+<h4 id="4-2-2-费马小定理"><a href="#4-2-2-费马小定理" class="headerlink" title="4.2.2 费马小定理"></a>4.2.2 费马小定理</h4><p>特别地，在 $n$ 为素数的时候满足 $a^{n-1} \equiv 1 \pmod n$,为费马小定理</p>
+<h4 id="4-2-3-扩展欧拉定理"><a href="#4-2-3-扩展欧拉定理" class="headerlink" title="4.2.3 扩展欧拉定理"></a>4.2.3 扩展欧拉定理</h4><p>用来解决 $a^b$ % $m$ 过大的问题，进行降幂操作</p>
+<p>$$<br>a^b \equiv<br>\begin{cases}<br>a^{b \text{ mod } \varphi(p)},\quad gcd(a,p)&#x3D;1\<br>a^b ,\quad gcd(a,p) \neq 1 , b&lt; \varphi(p) \text{  (mod p) }\<br>a^{b \text{ mod } \varphi(p) +\varphi(p)},\quad gcd(a,p) \neq 1,b \geq \varphi(p)\<br>\end{cases}<br>$$</p>
+<p>其中最重要的一条：</p>
+<p>$$<br>\forall a,m\text{ 若 }gcd(a,m)&#x3D;1 \text{ , } a^b \equiv a^{b \text{ mod }\varphi(m)+\varphi(m) } (\text{ mod } m)<br>$$</p>
+<p>若 $m$ 是质数时，可以直接使用费马小定理。</p>
+<hr>
+<p>比如这道题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4139">Luogu P4139 上帝与集合的正确用法</a> 是一道模板题。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn=<span class="number">1e7</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> phi[maxn],prime[maxn],p[maxn],cnt=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;maxn;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!prime[i])&#123;</span><br><span class="line">			p[++cnt]=i;</span><br><span class="line">			phi[i]=i<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;i*p[j]&lt;maxn;j++)&#123;</span><br><span class="line">			prime[i*p[j]]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i%p[j]==<span class="number">0</span>)&#123;</span><br><span class="line">				phi[i*p[j]]=phi[i]*p[j];</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> phi[i*p[j]]=phi[i]*(p[j]<span class="number">-1</span>); </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">mul</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> mod)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) res=(res+a)%mod;</span><br><span class="line">		a=(a+a)%mod;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">qukpow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> mod)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> res=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) res=<span class="built_in">mul</span>(res,a,mod);</span><br><span class="line">		a=<span class="built_in">mul</span>(a,a,mod);</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(p==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">qukpow</span>(<span class="number">2</span>,<span class="built_in">solve</span>(phi[p])+phi[p],p);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> t,pp;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">	cin&gt;&gt;t;</span><br><span class="line">	<span class="built_in">pre</span>();</span><br><span class="line">	<span class="keyword">while</span>(t--)&#123;</span><br><span class="line">		cin&gt;&gt;pp;</span><br><span class="line">		cout&lt;&lt;<span class="built_in">solve</span>(pp)&lt;&lt;<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是听说用展开式求 $\varphi$ 在加个记搜比线性筛更快。</p>
+<h2 id="5-欧几里得"><a href="#5-欧几里得" class="headerlink" title="5.欧几里得"></a>5.欧几里得</h2><h3 id="5-1-欧几里得算法"><a href="#5-1-欧几里得算法" class="headerlink" title="5.1 欧几里得算法"></a>5.1 欧几里得算法</h3><p>主要用于求解两个数 $a$ 和 $b$ 的最大公约数,我们不妨设 $(a&gt;b)$ ,其公式为 $gcd(a,b)&#x3D;gcd(b,a \text{ mod } b)&#x3D;gcd(a \text{ mod } b,b \text{ mod } (a \text{ mod } b))&#x3D; \ldots &#x3D;gcd(x,0)$ ,这里的 $x$ 即为最大公约数</p>
+<p>可用于求上文 约数 章节所提到的 $gcd$ 和 $lcm$ 。 </p>
+<p>注意：欧几里得算法的一点要求是 $a&gt;b$ 。</p>
+<h3 id="5-2裴蜀定理"><a href="#5-2裴蜀定理" class="headerlink" title="5.2裴蜀定理"></a>5.2裴蜀定理</h3><p>又称贝祖定理。</p>
+<p><strong>定义</strong>：对于整数 $a$ 和 $b$ 以及它们的 $gcd(a,b)&#x3D;d$ ,可以得出存在任意的整数 $x$ 和 $y$ ,使得 $ax+by&#x3D;m$ , $m$ 一定是 $d$ 的整数倍，且存在 $ax+by&#x3D;d$ 。当 $gcd(a,b)&#x3D;1$ 时，存在唯一的一组 $ax+by&#x3D;1$。</p>
+<p>不想写证明了。</p>
+<h3 id="5-3扩展欧几里得算法（扩欧）"><a href="#5-3扩展欧几里得算法（扩欧）" class="headerlink" title="5.3扩展欧几里得算法（扩欧）"></a>5.3扩展欧几里得算法（扩欧）</h3><p>应用1：此算法用来求解 $ax+by&#x3D;gcd(a,b)$ 的一组可行解。</p>
+<p>根据裴蜀定理，该方程一定有解。</p>
+<p>①：$ax_0+by_0&#x3D;gcd(a,b)$</p>
+<p>②：$bx_1+(a \text{ mod } b)y_1&#x3D;gcd(b,a \text{ mod } b)$</p>
+<p>$\because gcd(a,b)&#x3D;gcd(b,a \text{ mod } b)$ </p>
+<p>$\therefore ax_0+by_0&#x3D;bx_1+(a \text{ mod } b)y_1$  ③</p>
+<p>$a \text{ mod }b&#x3D;a- \lfloor a&#x2F;b \rfloor* b$ ④</p>
+<p>将④代入③中可得：</p>
+<p>$ax_0+by_0&#x3D;bx_1+(a-\lfloor a&#x2F;b\rfloor*b)y_1$</p>
+<p>解得：</p>
+<p>$x_0&#x3D;y_1,y_0&#x3D;x_1-\lfloor a&#x2F;b \rfloor *y_1$</p>
+<p>不难发现，$x_0,y_0$ 的 值由$x_1,y_1$ 的值迭代而来。</p>
+<p>所以可以通过递归的方式求出可行解</p>
+<p>对于递归出口 , 当 $ax+by&#x3D;gcd(a,0), ax+ by&#x3D;a$ ,此时的子解为 $x&#x3D;1,y&#x3D;0$</p>
+<p>用代码实现就是：</p>
+   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">exgcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> &amp;x, <span class="type">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!b)&#123;</span><br><span class="line">        x = <span class="number">1</span>; y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> a;   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> d = <span class="built_in">exgcd</span>(b, a % b, x, y);</span><br><span class="line">    <span class="type">int</span> temp=y;    </span><br><span class="line">    y=x-(a/b)*y;</span><br><span class="line">    x=temp;</span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>假设 $x_1$ , $y_1$ , $x_2$ , $y_2$ 是方程的两组解，则：</p>
+<p>$ax_1+by_1&#x3D;c$</p>
+<p>$ax_2+by_2&#x3D;c$</p>
+<p>两式子相减得 $a(x_1-x_2)+b(y_1-y_2)&#x3D;0$ </p>
+<p>令 $d&#x3D;gcd(a,b)$</p>
+<p>有：$(a&#x2F;d)(x_1-x_2)+(b&#x2F;d)(y_1-y_2)&#x3D;0$</p>
+<p>此时，$a&#x2F;d$ 与 $b&#x2F;d$ 互质，则 $x_1-x_2&#x3D;(b&#x2F;d)(y_2-y_1)&#x2F;(a&#x2F;d)&#x3D;k*(b&#x2F;d)$</p>
+<p>则通解可以表示为为：$x&#x3D;x_0+k*(b&#x2F;d)$ 。</p>
+<p>所以，最小整数解 $x&#x3D;(x_0 \text{ mod }(b&#x2F;d)+b&#x2F;d)\text{ mod }(b&#x2F;d)$</p>
+<p>其中 $x_0$ 是任意解</p>
+<h2 id="6-逆元"><a href="#6-逆元" class="headerlink" title="6.逆元"></a>6.逆元</h2><h3 id="6-1-逆元的定义"><a href="#6-1-逆元的定义" class="headerlink" title="6.1 逆元的定义"></a>6.1 逆元的定义</h3><p>即线性同余方程 $ax \equiv 1 (\text{ mod } b)$ 的一组解，称 $x$ 为 $a \mod b$  的逆元，记作 $a^{-1}$ 。</p>
+<h3 id="6-2-逆元的计算"><a href="#6-2-逆元的计算" class="headerlink" title="6.2 逆元的计算"></a>6.2 逆元的计算</h3><p><strong>方法1：</strong></p>
+<p>对于线性同余方程 $ax \equiv 1 (\text{ mod } b)$ </p>
+<p>我们可以转化为 $ax-1&#x3D;b*(-y)$ </p>
+<p>移项得 $ax+by&#x3D;1$ ，即可用扩欧求解。</p>
+<p><strong>方法二：</strong></p>
+<p>根据费马小定理，原方程可以转化为 $ax \equiv a^{b-1}(\mod b)$</p>
+<p>得 $x&#x3D;a^{b-2}(\mod b)$</p>
+<p>于是可以用快速幂求解，但需要保证 $b$ 是一个质数。</p>
+<p><strong>方法三：</strong> 线性递推求逆元</p>
+<p>很明显，1的逆元为1</p>
+<p>对于 $p$ 的逆元 $p^{-1}$ ，设 $p&#x3D;i*k+j$ ，其中 $0\leq i&lt;p,j&lt;i$ 。</p>
+<p>那么转化为同余形式，就有 $i*k+j \equiv 0 (mod\text{ } p)$，</p>
+<p>两边同乘 $i^{-1}<em>j^{-1}$ ，得 $k</em>j^{-1}+i^{-1}&#x3D;0 (mod \text{ }p)$</p>
+<p>移项，得 $i^{-1} \equiv -k*j^{-1} (mod \text{ }p)$</p>
+<p>因为 $k&#x3D;\lfloor \frac{p}{i} \rfloor$ ，所以 $i^{-1} \equiv -\lfloor \frac{p}{i} \rfloor*j^{-1} (mod \text{ }p)$</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">inv[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">	inv[i]=(-p/i*inv[p%i]%p+p)%p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="逆元的使用"><a href="#逆元的使用" class="headerlink" title="逆元的使用"></a>逆元的使用</h3><p>逆元的一个重要用途是用于除法的取模。即 $a&#x2F;b \mod p$ 当 $a$ 和 $b$ 过大时，容易导致溢出导致取模出错。</p>
+<p>可以将其转化为 $a*b^{-1} \mod p$ 进行计算。</p>
+<h2 id="7-同余方程组"><a href="#7-同余方程组" class="headerlink" title="7.同余方程组"></a>7.同余方程组</h2><p>即求以下同余方程组的解</p>
+<p>$$<br>y&#x3D;<br>\begin{cases}<br>x \equiv a_1 \text{ }(mod \text{ }m_1)\<br>x \equiv a_2 \text{ }(mod \text{ }m_2)\<br>x \equiv a_3 \text{ }(mod \text{ }m_3)\<br>\dots\<br>x \equiv a_r \text{ }(mod \text{ }m_r)<br>\end{cases}<br>$$</p>
+<h3 id="7-1-中国剩余定理（CRT）"><a href="#7-1-中国剩余定理（CRT）" class="headerlink" title="7.1 中国剩余定理（CRT）"></a>7.1 中国剩余定理（CRT）</h3><p>设 $m_1,m_2,\dots,m_i$ 是两两互质的正整数，则同余方程有整数解，且模 $M&#x3D;m_1<em>m_2</em>\dots*m_r$唯一，解为 $x \equiv \sum_{i&#x3D;1}^ra_iM_iM_i^{-1}\text{ }(mod \text{ }M)$ ，其中 $M_i&#x3D;M&#x2F;m_i$，$M_i^{-1}$ 为 $M_i$ 模 $m_i$ 的逆元。</p>
+<p><del>因为这玩意实在太难证就不证了吧，就当结论背好了</del></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="function">ll <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!b)&#123;</span><br><span class="line">		x=<span class="number">1</span>;y=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	ll d=<span class="built_in">exgcd</span>(b,a%b,x,y);</span><br><span class="line">	ll temp=x;</span><br><span class="line">	x=y;</span><br><span class="line">	y=temp-a/b*y;</span><br><span class="line">	<span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line">ll n,a[<span class="number">15</span>],m[<span class="number">15</span>],M=<span class="number">1</span>,ans=<span class="number">0</span>,mi,mi_1;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;m[i]&gt;&gt;a[i];</span><br><span class="line">		M*=m[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		ll x,y;</span><br><span class="line">		mi=M/m[i];</span><br><span class="line">		ll d=<span class="built_in">exgcd</span>(mi,m[i],mi_1,y);</span><br><span class="line">		ans=(ans+a[i]*mi*mi_1)%M;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans&lt;<span class="number">0</span>) ans+=M;</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-2-扩展中国剩余定理（EXCRT）"><a href="#7-2-扩展中国剩余定理（EXCRT）" class="headerlink" title="7.2 扩展中国剩余定理（EXCRT）"></a>7.2 扩展中国剩余定理（EXCRT）</h3><p>又叫迭代法。</p>
+<p>顾名思义，每次合并两个同余式。</p>
+<p><strong>计算推导：</strong></p>
+<p>$$<br>\begin{cases}<br>x \equiv a_1 \text{ }(mod \text{ }m_1)\<br>x \equiv a_2 \text{ }(mod \text{ }m_2)\<br>\end{cases}<br>$$</p>
+<p>$$<br>\begin{cases}<br>x &#x3D; a_1+k_1m_1(1)\<br>x &#x3D; a_2+k_2m_2(2)\<br>\end{cases}<br>$$</p>
+<p>$$<br>(1)-(2):k_1m_1-k_2m_2&#x3D;a_2-a_1(3)<br>$$</p>
+<p>$(3)$ 式可以用扩欧求出 $k_1$,同时判断是否有解，将 $k_1$ 带入$(1)$ ，得出 $x’&#x3D;a_1+k_1m_1$</p>
+<p>可以得出，方程组的通解为 $x&#x3D;x’+k*lcm(m_1,m_2)$ ，$x \equiv x’\text{ } (mod \text{ }p)$。</p>
+<p>再以此方式迭代即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="function">ll <span class="title">exgcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!b)&#123;</span><br><span class="line">		x=<span class="number">1</span>;y=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	ll d=<span class="built_in">exgcd</span>(b,a%b,x,y),temp;</span><br><span class="line">	temp=x;</span><br><span class="line">	x=y;</span><br><span class="line">	y=temp-a/b*y;</span><br><span class="line">	<span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">mul</span><span class="params">(ll a,ll b,ll mod)</span></span>&#123;</span><br><span class="line">	ll res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) res=(res+a)%mod;</span><br><span class="line">		a=(a+a)%mod;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">ll k,n,a,b,d,lcm,now,x,y;</span><br><span class="line"><span class="type">bool</span> flag;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(cin&gt;&gt;n)&#123;</span><br><span class="line">		cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">		lcm=a;now=b;</span><br><span class="line">		flag=<span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">			cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">			b=(b-now%a+a)%a;</span><br><span class="line">			d=<span class="built_in">exgcd</span>(lcm,a,x,y); </span><br><span class="line">			<span class="keyword">if</span>(b%d)&#123;</span><br><span class="line">				flag=<span class="literal">true</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			k=<span class="built_in">mul</span>(x,b/d,a);</span><br><span class="line">			now+=lcm*k;</span><br><span class="line">			lcm=lcm/d*a;</span><br><span class="line">			now=(now%lcm+lcm)%lcm;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(flag) cout&lt;&lt;<span class="string">&quot;-1\n&quot;</span>;</span><br><span class="line">		<span class="keyword">else</span> cout&lt;&lt;now&lt;&lt;<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-结语"><a href="#8-结语" class="headerlink" title="8 结语"></a>8 结语</h2><p>2023.1.15 终于更完这个史前巨坑了。纪念。</p>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/protrait.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ohEPse</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">0</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ohepse"><i></i><span>🛴前往小家...</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ohepse" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:decalemaxithu@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><center>主域名：<br><a target="_blank" rel="noopener" href="https://www.fomal.cc"><b><font color="#5ea6e5">fomal.cc</font></b></a>&nbsp;|&nbsp;<a target="_blank" rel="noopener" href="https://www.fomal.cn"><b><font color="#5ea6e5">fomal.cn</font></b></a><br>备用域名：<br><a target="_blank" rel="noopener" href="https://blog.fomal.cc"><b><font color="#5ea6e5">blog.fomal.cc</font></b></a><br><a target="_blank" rel="noopener" href="https://aa.fomal.cc"><b><font color="#5ea6e5">aa.fomal.cc</font></b></a><br><a target="_blank" rel="noopener" href="https://bb.fomal.cc"><b><font color="#5ea6e5">bb.fomal.cc</font></b></a><br><a href="mailto:admin@fomal.cn">📬：<b><font color="#a591e0">admin@fomal.cn</font></b></a></center></div></div><div class="sticky_layout"><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">0</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2023-04-01T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-04-02T12:28:55.470Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By ohEPse</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
