@@ -1,4 +1,4 @@
-window.onscroll = percent;// 执行函数
+window.onscroll = percent;// 执行函数;// 执行函数
 // 页面百分比
 function percent() {
     let a = document.documentElement.scrollTop || window.pageYOffset, // 卷去高度
@@ -9,7 +9,7 @@ function percent() {
     if (result <= 95) {
         up.childNodes[0].style.display = 'none'
         up.childNodes[1].style.display = 'block'
-        up.childNodes[1].innerHTML = result;
+        up.childNodes[1].childNodes[0].innerHTML = result;
     } else {
         up.childNodes[1].style.display = 'none'
         up.childNodes[0].style.display = 'block'
