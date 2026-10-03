@@ -4651,6 +4651,15 @@ div#runtime {
 .mathjax-overflow {
   overflow-x: auto;
   overflow-y: hidden;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+  scrollbar-gutter: auto;
+}
+.mathjax-overflow::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 span.mathjax-overflow {
   display: inline-block;

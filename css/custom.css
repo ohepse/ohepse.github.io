@@ -748,3 +748,28 @@ body::-webkit-scrollbar {
 :root{
     --lyx-theme:#ed709b /*我的主题色*/
 }
+
+/* MathJax 公式横向溢出时隐藏滚动条（公式过宽仍可拖动/触控滚动） */
+.mathjax-overflow::-webkit-scrollbar {
+  display: none;
+}
+.mathjax-overflow {
+  scrollbar-width: none;          /* Firefox */
+  scrollbar-color: transparent transparent; /* 新版 Chrome/Edge 不再绘制 --scrollbar-color 蓝色滑块 */
+  -ms-overflow-style: none;       /* 旧版 Edge / IE */
+  scrollbar-gutter: auto;         /* 不为滚动条预留空间，避免公式下方多出一条空白 */
+}
+
+/* 兜底：万一主题里的包装层被还原，直接盯住 MathJax 自身的容器 */
+mjx-container {
+  max-width: 100%;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+}
+
+mjx-container::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
