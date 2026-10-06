@@ -37,7 +37,12 @@
 }
 
 #aside-content #aside-calendar {
-  padding: 12px 14px 10px;
+  padding: 14px 16px 12px;
+}
+
+/* 卡片标题也跟着放大一点（主题默认给 .item-headline 的字号偏小） */
+#aside-calendar .item-headline {
+  font-size: 1.08em;
 }
 
 /* 上半部分：左边大日期 + 右边月历 */
@@ -48,7 +53,7 @@
 }
 
 #aside-calendar .cal-left {
-  flex: 0 0 42%;
+  flex: 0 0 45%;
   min-width: 0;
   align-self: center;
   text-align: center;
@@ -56,14 +61,14 @@
 
 #aside-calendar .cal-week {
   font-weight: 600;
-  font-size: .92em;
+  font-size: 1em;
   line-height: 1.3;
   color: var(--cal-ink);
 }
 
 #aside-calendar .cal-daynum {
   font-weight: 700;
-  font-size: 2.4em;
+  font-size: 2.6em;
   line-height: 1.08;
   color: var(--cal-strong);
   font-variant-numeric: tabular-nums;
@@ -71,9 +76,11 @@
 
 #aside-calendar .cal-solar,
 #aside-calendar .cal-lunar {
-  font-size: .74em;
-  line-height: 1.5;
-  white-space: nowrap;
+  font-size: .85em;
+  line-height: 1.55;
+  /* 左栏窄，字号放大后允许在空格处折行，宁可两行也不压到右边的月历 */
+  white-space: normal;
+  word-break: keep-all;
 }
 
 #aside-calendar .cal-solar {
@@ -90,12 +97,12 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   min-width: 0;
-  font-size: .72em;
+  font-size: .95em;
   text-align: center;
 }
 
 #aside-calendar .cal-hd {
-  padding-bottom: 2px;
+  padding-bottom: 3px;
   font-size: .95em;
   color: var(--cal-muted);
 }
@@ -104,7 +111,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 1.9em;
+  height: 1.85em;
   border-radius: 50%;
   color: var(--cal-ink);
   font-variant-numeric: tabular-nums;
@@ -155,7 +162,9 @@
 }
 
 #aside-calendar .cal-stats {
-  font-size: .74em;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: .85em;
   line-height: 1.5;
   color: var(--cal-muted);
   white-space: nowrap;
@@ -168,14 +177,14 @@
 
 #aside-calendar .cal-btn {
   flex: 0 0 auto;
-  padding: 0 .85em;
-  height: 1.9em;
+  padding: 0 .95em;
+  height: 2em;
   border: none;
-  border-radius: .95em;
+  border-radius: 1em;
   background: var(--cal-accent);
   color: #fff;
-  font-size: .74em;
-  line-height: 1.9em;
+  font-size: .85em;
+  line-height: 2em;
   cursor: pointer;
   transition: filter .2s, opacity .2s;
 }
@@ -211,7 +220,7 @@
 
 #aside-calendar .cal-ft-title {
   text-align: center;
-  font-size: .72em;
+  font-size: .85em;
   color: var(--cal-muted);
 }
 
@@ -222,16 +231,16 @@
   color: var(--cal-ink);
 }
 
-#aside-calendar .cal-ft-level.lv0 { font-size: 1em; }
-#aside-calendar .cal-ft-level.lv1 { font-size: 1.3em; }
-#aside-calendar .cal-ft-level.lv2 { font-size: 1.5em; color: #e05252; }
-#aside-calendar .cal-ft-level.lv3 { font-size: 1.5em; color: #2fa84f; }
+#aside-calendar .cal-ft-level.lv0 { font-size: 1.15em; }
+#aside-calendar .cal-ft-level.lv1 { font-size: 1.5em; }
+#aside-calendar .cal-ft-level.lv2 { font-size: 1.85em; color: #e05252; }
+#aside-calendar .cal-ft-level.lv3 { font-size: 1.85em; color: #2fa84f; }
 
 #aside-calendar .cal-ft-cols {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px 8px;
-  margin-top: 6px;
+  gap: 2px 10px;
+  margin-top: 7px;
 }
 
 #aside-calendar .cal-ft-col {
@@ -239,17 +248,17 @@
 }
 
 #aside-calendar .cal-ft-h {
-  font-size: .74em;
+  font-size: .88em;
   font-weight: 700;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 #aside-calendar .cal-ft-col.good .cal-ft-h { color: #e05252; }
 #aside-calendar .cal-ft-col.bad .cal-ft-h { color: var(--cal-ink); }
 
 #aside-calendar .cal-ft-item {
-  font-size: .74em;
-  line-height: 1.45;
+  font-size: .88em;
+  line-height: 1.55;
   color: var(--cal-ink);
   word-break: break-word;
 }
@@ -257,14 +266,14 @@
 #aside-calendar .cal-ft-item i {
   display: block;
   font-style: normal;
-  font-size: .9em;
+  font-size: .92em;
   color: var(--cal-muted);
 }
 
 #aside-calendar .cal-ft-foot {
-  margin-top: 6px;
+  margin-top: 7px;
   text-align: center;
-  font-size: .7em;
+  font-size: .82em;
   color: var(--cal-muted);
 }
 

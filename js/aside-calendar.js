@@ -2,7 +2,7 @@
  * aside-calendar.js —— 侧栏「日历 · 打卡」卡
  * ==================================================================
  * 顶掉原来那张卡在 loading.gif 上的电子钟卡（electric_clock 已在配置里关掉），
- * 在 公告 和 网站资讯 之间插一张自己的卡：
+ * 插在侧栏 .sticky_layout 的最前面（公告卡已整栏删掉，所以现在紧跟头像卡）：
  *
  *   第41周 周二   |  日 一 二 三 四 五 六
  *        06       |  ·  ·  ·  1  2  3  4
@@ -152,12 +152,10 @@
     var rand = seedRand(now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate())
     var r = 1 + Math.floor(rand() * 100) // 1-100
     var lv = luckLevel(r)
-    var r1 = pick(rand), r2 = pick(rand)
-    while (r2 === r1) r2 = pick(rand)
-    var r3 = pick(rand), r4 = pick(rand)
-    while (r4 === r3) r4 = pick(rand)
-    var good = [{ t: THING[r1], d: LUCK[r1] }, { t: THING[r2], d: LUCK[r2] }]
-    var bad = [{ t: THING[r3], d: UNLUCK[r3] }, { t: THING[r4], d: UNLUCK[r4] }]
+    var r1 = pick(rand) // 宜（只出一条）
+    var r3 = pick(rand) // 忌（只出一条）
+    var good = [{ t: THING[r1], d: LUCK[r1] }]
+    var bad = [{ t: THING[r3], d: UNLUCK[r3] }]
     if (lv >= 8) good = [{ t: THING[1], d: '' }] // 大吉/超级吉：万事皆宜
     if (lv <= 1) bad = [{ t: THING[4], d: '' }] // 凶：诸事不宜
     return { r: r, lv: lv, name: FORTUNE[lv], good: good, bad: bad }
