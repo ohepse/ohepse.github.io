@@ -773,3 +773,9 @@ mjx-container::-webkit-scrollbar {
   height: 0 !important;
   display: none !important;
 }
+
+/* 侧栏头像照片放大一点（主题默认 110px；只作用于桌面侧栏，不动手机抽屉里那个） */
+#aside-content .card-info .avatar-img {
+  width: 122px;
+  height: 122px;
+}
