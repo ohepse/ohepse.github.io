@@ -191,6 +191,83 @@
   font-weight: 600;
 }
 
+#aside-calendar .cal-btn[disabled] {
+  cursor: default;
+  opacity: .8;
+}
+
+/* 打完卡后的运势区（仿洛谷打卡弹窗：运势 + 宜/忌 两栏） */
+#aside-calendar .cal-fortune {
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--cal-track);
+  animation: calPop .32s ease;
+}
+
+@keyframes calPop {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+
+#aside-calendar .cal-ft-title {
+  text-align: center;
+  font-size: .72em;
+  color: var(--cal-muted);
+}
+
+#aside-calendar .cal-ft-level {
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--cal-ink);
+}
+
+#aside-calendar .cal-ft-level.lv0 { font-size: 1em; }
+#aside-calendar .cal-ft-level.lv1 { font-size: 1.3em; }
+#aside-calendar .cal-ft-level.lv2 { font-size: 1.5em; color: #e05252; }
+#aside-calendar .cal-ft-level.lv3 { font-size: 1.5em; color: #2fa84f; }
+
+#aside-calendar .cal-ft-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 8px;
+  margin-top: 6px;
+}
+
+#aside-calendar .cal-ft-col {
+  min-width: 0;
+}
+
+#aside-calendar .cal-ft-h {
+  font-size: .74em;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+#aside-calendar .cal-ft-col.good .cal-ft-h { color: #e05252; }
+#aside-calendar .cal-ft-col.bad .cal-ft-h { color: var(--cal-ink); }
+
+#aside-calendar .cal-ft-item {
+  font-size: .74em;
+  line-height: 1.45;
+  color: var(--cal-ink);
+  word-break: break-word;
+}
+
+#aside-calendar .cal-ft-item i {
+  display: block;
+  font-style: normal;
+  font-size: .9em;
+  color: var(--cal-muted);
+}
+
+#aside-calendar .cal-ft-foot {
+  margin-top: 6px;
+  text-align: center;
+  font-size: .7em;
+  color: var(--cal-muted);
+}
+
 [data-theme='dark'] #aside-calendar .cal-btn:not(.is-on) {
   color: #10131a; /* 深色模式下实心按钮是浅蓝底，字要压深；空心「已打卡」不受影响 */
 }
