@@ -1,0 +1,203 @@
+/*!
+ * aside-calendar.css —— 侧栏「日历 · 打卡」卡样式（配合 /js/aside-calendar.js）
+ * ==================================================================
+ * 只作用在 #aside-calendar 这一张卡上，不动主题其它部分。
+ * 配色跟着站点主题色走（--btn-bg 就是主题色 #49b1f5），由它派生出几档：
+ *   --cal-accent  主题色本体            → 打卡圆点、按钮
+ *   --cal-strong  主题色压深/提亮一档    → 大号日期、统计数字等当文字用的地方
+ *   --cal-solid   实心块底色 + --cal-solid-ink 上面的字色 → 已打卡 / 今天
+ * 每个变量先写一行「不支持 color-mix() 的老浏览器」回退值，再写 color-mix 版本。
+ */
+#aside-calendar {
+  --cal-accent: var(--theme-color, var(--btn-bg, #49b1f5));
+  --cal-strong: #1d6fa5;
+  --cal-strong: color-mix(in srgb, var(--cal-accent) 70%, #000);
+  --cal-track: rgba(73, 177, 245, .15);
+  --cal-track: color-mix(in srgb, var(--cal-accent) 15%, transparent);
+  --cal-fill: rgba(73, 177, 245, .3);
+  --cal-fill: color-mix(in srgb, var(--cal-accent) 30%, transparent);
+  --cal-solid: #1d6fa5;
+  --cal-solid: color-mix(in srgb, var(--cal-accent) 70%, #000);
+  --cal-solid-ink: #fff;
+  --cal-ink: var(--font-color, #4c4948);
+  --cal-muted: rgba(60, 60, 67, .55);
+}
+
+[data-theme='dark'] #aside-calendar {
+  --cal-strong: #8fd0ff;
+  --cal-strong: color-mix(in srgb, var(--cal-accent) 75%, #fff);
+  --cal-track: rgba(73, 177, 245, .22);
+  --cal-track: color-mix(in srgb, var(--cal-accent) 22%, transparent);
+  --cal-fill: rgba(73, 177, 245, .4);
+  --cal-fill: color-mix(in srgb, var(--cal-accent) 40%, transparent);
+  --cal-solid: #8fd0ff;
+  --cal-solid: color-mix(in srgb, var(--cal-accent) 72%, #fff);
+  --cal-solid-ink: #10131a;
+  --cal-muted: rgba(235, 235, 245, .6);
+}
+
+#aside-content #aside-calendar {
+  padding: 12px 14px 10px;
+}
+
+/* 上半部分：左边大日期 + 右边月历 */
+#aside-calendar .cal-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px 8px;
+}
+
+#aside-calendar .cal-left {
+  flex: 0 0 42%;
+  min-width: 0;
+  align-self: center;
+  text-align: center;
+}
+
+#aside-calendar .cal-week {
+  font-weight: 600;
+  font-size: .92em;
+  line-height: 1.3;
+  color: var(--cal-ink);
+}
+
+#aside-calendar .cal-daynum {
+  font-weight: 700;
+  font-size: 2.4em;
+  line-height: 1.08;
+  color: var(--cal-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+#aside-calendar .cal-solar,
+#aside-calendar .cal-lunar {
+  font-size: .74em;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+#aside-calendar .cal-solar {
+  color: var(--cal-ink);
+}
+
+#aside-calendar .cal-lunar {
+  color: var(--cal-muted);
+}
+
+/* 月历网格：已打卡填实心，今天未打卡是空心圈 */
+#aside-calendar .cal-grid {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  min-width: 0;
+  font-size: .72em;
+  text-align: center;
+}
+
+#aside-calendar .cal-hd {
+  padding-bottom: 2px;
+  font-size: .95em;
+  color: var(--cal-muted);
+}
+
+#aside-calendar .cal-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.9em;
+  border-radius: 50%;
+  color: var(--cal-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+#aside-calendar .cal-cell.is-empty {
+  visibility: hidden;
+}
+
+#aside-calendar .cal-cell.is-future {
+  color: var(--cal-muted);
+  opacity: .45;
+}
+
+#aside-calendar .cal-cell.is-checked {
+  background: var(--cal-solid);
+  color: var(--cal-solid-ink);
+  font-weight: 600;
+}
+
+#aside-calendar .cal-cell.is-today:not(.is-checked) {
+  box-shadow: inset 0 0 0 1.5px var(--cal-solid);
+  color: var(--cal-strong);
+  font-weight: 700;
+}
+
+#aside-calendar .cal-cell.is-today {
+  cursor: pointer;
+}
+
+#aside-calendar .cal-cell.is-today:hover {
+  filter: brightness(1.08);
+}
+
+#aside-calendar .cal-cell.is-today.is-checked {
+  box-shadow: 0 1px 4px var(--cal-fill);
+}
+
+/* 下半部分：打卡统计 + 按钮 */
+#aside-calendar .cal-foot {
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--cal-track);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+#aside-calendar .cal-stats {
+  font-size: .74em;
+  line-height: 1.5;
+  color: var(--cal-muted);
+  white-space: nowrap;
+}
+
+#aside-calendar .cal-stats b {
+  color: var(--cal-strong);
+  font-size: 1.1em;
+}
+
+#aside-calendar .cal-btn {
+  flex: 0 0 auto;
+  padding: 0 .85em;
+  height: 1.9em;
+  border: none;
+  border-radius: .95em;
+  background: var(--cal-accent);
+  color: #fff;
+  font-size: .74em;
+  line-height: 1.9em;
+  cursor: pointer;
+  transition: filter .2s, opacity .2s;
+}
+
+#aside-calendar .cal-btn:hover {
+  filter: brightness(1.1);
+}
+
+#aside-calendar .cal-btn.is-on {
+  background: transparent;
+  color: var(--cal-strong);
+  box-shadow: inset 0 0 0 1.5px var(--cal-solid);
+  font-weight: 600;
+}
+
+[data-theme='dark'] #aside-calendar .cal-btn:not(.is-on) {
+  color: #10131a; /* 深色模式下实心按钮是浅蓝底，字要压深；空心「已打卡」不受影响 */
+}
+
+@media (max-width: 900px) {
+  #aside-calendar .cal-main {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+}
