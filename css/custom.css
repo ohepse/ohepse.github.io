@@ -786,26 +786,10 @@ mjx-container::-webkit-scrollbar {
   margin-top: 0;
 }
 
-/* 主题默认给 .layout > div:first-child { width: 74% }（给右侧栏留 26%），
-   但首页文章区不该被压窄——占满整行，卡片才够宽、三列才均匀 */
-.layout > .recent-posts,
-.layout > div:first-child#recent-posts,
-.layout > #recent-posts {
-  width: 100% !important;
-  max-width: 100%;
-}
+/* 正文/侧栏配比交回主题默认（74% / 26%），与 fomal.cc 一致 */
 
 /* 两栏配比：右侧栏由 26%(277px) 加宽到约 32%(374px)，两栏之间留 30px 空隙 */
-.layout > #recent-posts {
-  flex: 0 0 930px;
-  width: 930px !important;
-}
-.layout > #aside-content {
-  flex: 1 1 auto;
-  width: auto !important;
-  padding-left: 0 !important;
-  margin-left: 30px;
-}
+
 /* 滚动条会占掉一侧宽度，把根元素两侧都预留等宽空间，内容才真正居中 */
 html {
   scrollbar-gutter: stable both-edges;
@@ -1048,4 +1032,19 @@ html {
 }
 #aside-content .card-calendar .cal-foot {
   gap: 4px;
+}
+
+/* ===== 布局对齐 fomal.cc（www.fomal.cc 实测值）===== */
+/* 容器：1400px 上限 + 右侧留白 78px（主题默认是 1200px / 15px） */
+.layout {
+  max-width: 1400px;
+  padding: 40px 78px 40px 15px;
+}
+@media screen and (max-width: 768px) {
+  .layout { padding: 20px 5px; }
+}
+/* 卡片：三列、单卡 273px（fomal.cc 实测 273×352，列间距 8px） */
+#recent-posts {
+  grid-template-columns: repeat(auto-fill, minmax(273px, 1fr));
+  gap: 8px;
 }
