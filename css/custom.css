@@ -797,8 +797,8 @@ mjx-container::-webkit-scrollbar {
 
 /* 两栏配比：右侧栏由 26%(277px) 加宽到约 32%(374px)，两栏之间留 30px 空隙 */
 .layout > #recent-posts {
-  flex: 0 0 878px;
-  width: 878px !important;
+  flex: 0 0 930px;
+  width: 930px !important;
 }
 .layout > #aside-content {
   flex: 1 1 auto;
@@ -1030,4 +1030,22 @@ html {
 #aside-content .card-info .avatar-img {
   width: 122px;
   height: 122px;
+}
+
+/* 收窄右侧栏：压缩侧栏卡片留白与日历字号（真实类名是 .card-calendar） */
+#aside-content .card-widget {
+  padding: 12px 10px;
+}
+#aside-content .card-calendar .cal-grid {
+  font-size: 0.84em;
+}
+#aside-content .card-calendar .cal-daynum {
+  font-size: 1.45em;
+}
+#aside-content .card-calendar .cal-stats {
+  white-space: normal;
+  font-size: 0.82em;
+}
+#aside-content .card-calendar .cal-foot {
+  gap: 4px;
 }
