@@ -774,6 +774,258 @@ mjx-container::-webkit-scrollbar {
   display: none !important;
 }
 
+/* ===================== 首页文章卡片：三列 + 正方形 ===================== */
+/* 需要压过 hexo-butterfly-article-double-row 注入的样式表（它加载在 custom.css 之后，
+   规则形如 #recent-posts>.recent-post-item{width:49%;display:inline-block}），
+   所以这里统一使用 #recent-posts > .recent-post-item 的特指度并显式复写。 */
+#recent-posts {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-content: start;
+  margin-top: 0;
+}
+
+/* 主题默认给 .layout > div:first-child { width: 74% }（给右侧栏留 26%），
+   但首页文章区不该被压窄——占满整行，卡片才够宽、三列才均匀 */
+.layout > .recent-posts,
+.layout > div:first-child#recent-posts,
+.layout > #recent-posts {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+/* 两栏配比：右侧栏由 26%(277px) 加宽到约 32%(374px)，两栏之间留 30px 空隙 */
+.layout > #recent-posts {
+  flex: 0 0 878px;
+  width: 878px !important;
+}
+.layout > #aside-content {
+  flex: 1 1 auto;
+  width: auto !important;
+  padding-left: 0 !important;
+  margin-left: 30px;
+}
+/* 滚动条会占掉一侧宽度，把根元素两侧都预留等宽空间，内容才真正居中 */
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
+/* 顶部轮播：独占一整行（它被 insertAdjacentHTML 插为 #recent-posts 的第一个子元素） */
+#recent-posts > #swiper_container,
+#recent-posts > .recent-post-item:has(#swiper_container),
+#recent-posts > .recent-post-item:has(.blog-slider) {
+  grid-column: 1 / -1;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: auto;
+  min-height: 0;
+  padding: 0;
+  margin-bottom: 4px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+#recent-posts #swiper_container,
+#recent-posts .blog-slider {
+  width: 100% !important;
+}
+#recent-posts .blog-slider {
+  margin: 0 auto;
+  background: #fff !important;      /* 轮播背景：透明 -> 白色 */
+  border-radius: 16px;
+}
+[data-theme="dark"] #recent-posts .blog-slider {
+  background: #1f1f1f !important;   /* 夜间模式保持深色，避免刺眼 */
+}
+#recent-posts #swiper_container {
+  border-radius: 16px;
+  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+}
+
+#recent-posts > .recent-post-item {
+  position: relative;
+  display: block;
+  justify-self: stretch;
+  /* 必须是 100%：插件样式表里有 width:49%（且它加载在 custom.css 之后、特指度相同），
+     写 width:auto 会被它盖掉，卡片就只占格子的一半 */
+  width: 100% !important;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  align-self: stretch;
+  margin-top: 0 !important;   /* 覆盖 :not(:first-child){margin-top:20px}，间距交给 gap */
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--border-style);
+  border-radius: 16px;
+  background: var(--trans-light);
+  backdrop-filter: var(--backdrop-filter);
+  transform: none;           /* 避免与主题 hover 位移叠加 */
+}
+[data-theme="dark"] #recent-posts > .recent-post-item {
+  background: var(--trans-dark);
+}
+#recent-posts > .recent-post-item:hover {
+  transform: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+
+/* 封面：正方形，铺满卡片宽度 */
+#recent-posts > .recent-post-item .post_cover,
+#recent-posts > .recent-post-item .post_cover.left,
+#recent-posts > .recent-post-item .post_cover.right {
+  display: block;
+  order: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+#recent-posts > .recent-post-item .post_cover .post-bg,
+#recent-posts > .recent-post-item .post_cover img.post-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+#recent-posts > .recent-post-item:hover .post_cover .post-bg {
+  transform: scale(1.05);
+}
+
+/* 文字区：毛玻璃 + 向上自然过渡（mask 让模糊与底色一起淡出，不会出现硬边） */
+#recent-posts > .recent-post-item > .recent-post-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  padding: 38px 14px 14px;
+  text-align: center;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.44) 0%, rgba(255, 255, 255, 0.22) 45%, rgba(255, 255, 255, 0) 100%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 50%, rgba(0, 0, 0, 0.4) 78%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 0%, #000 50%, rgba(0, 0, 0, 0.4) 78%, transparent 100%);
+}
+#recent-posts > .recent-post-item > .recent-post-info > .article-title,
+#recent-posts > .recent-post-item > .recent-post-info > a.article-title,
+[data-theme="dark"] #recent-posts > .recent-post-item > .recent-post-info > .article-title,
+.read-mode #recent-posts > .recent-post-item > .recent-post-info > .article-title {
+  color: #fff !important;
+  margin: 0;
+  font-size: 1.22em;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap {
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.86em;
+  line-height: 1.6;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+#recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap a,
+#recent-posts > .recent-post-item > .recent-post-info > .article-meta-wrap .article-meta__separator {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+/* 正方形卡片里不展示正文摘要（特指度与插件相同，靠 !important 取胜） */
+#recent-posts > .recent-post-item > .recent-post-info > .content {
+  display: none !important;
+}
+
+/* 无封面文章：给卡片一个渐变色块，避免留下空白方块（保证整数排不留空） */
+#recent-posts > .recent-post-item:has(> .recent-post-info.no-cover) {
+  aspect-ratio: 1 / 1;
+}
+#recent-posts > .recent-post-item:has(> .recent-post-info.no-cover) {
+  background: #fff !important;
+}
+[data-theme="dark"] #recent-posts > .recent-post-item:has(> .recent-post-info.no-cover) {
+  background: #1f1f1f !important;
+}
+#recent-posts > .recent-post-item > .recent-post-info.no-cover {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05));
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+#recent-posts > .recent-post-item > .recent-post-info.no-cover > .article-title,
+#recent-posts > .recent-post-item > .recent-post-info.no-cover > a.article-title {
+  color: var(--text-highlight-color, #2c3e50) !important;
+  text-shadow: none !important;
+}
+#recent-posts > .recent-post-item > .recent-post-info.no-cover > .article-meta-wrap,
+#recent-posts > .recent-post-item > .recent-post-info.no-cover > .article-meta-wrap a {
+  color: var(--font-color, #4c4948) !important;
+  text-shadow: none !important;
+}
+#recent-posts > .recent-post-item > .post_cover:has(+ .recent-post-info.no-cover) {
+  background: linear-gradient(135deg, #6f42c1 0%, #8a5cd6 45%, #3eb8be 100%);
+}
+#recent-posts > .recent-post-item > .recent-post-info.no-cover {
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+#recent-posts > .recent-post-item > .recent-post-info.no-cover > .content {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.76em;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 8px;
+}
+
+@media screen and (max-width: 900px) {
+  #recent-posts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media screen and (max-width: 576px) {
+  #recent-posts { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+}
+
+/* 换页按钮：单独占最后一行并居中 */
+#pagination {
+  grid-column: 1 / -1;       /* span the whole row */
+  justify-self: stretch;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin: 22px auto 0;
+  padding: 0;
+  max-width: none;
+}
+#pagination .pagination {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
 /* 侧栏头像照片放大一点（主题默认 110px；只作用于桌面侧栏，不动手机抽屉里那个） */
 #aside-content .card-info .avatar-img {
   width: 122px;
