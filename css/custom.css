@@ -790,10 +790,7 @@ mjx-container::-webkit-scrollbar {
 
 /* 两栏配比：右侧栏由 26%(277px) 加宽到约 32%(374px)，两栏之间留 30px 空隙 */
 
-/* 滚动条会占掉一侧宽度，把根元素两侧都预留等宽空间，内容才真正居中 */
-html {
-  scrollbar-gutter: stable both-edges;
-}
+
 
 /* 顶部轮播：独占一整行（它被 insertAdjacentHTML 插为 #recent-posts 的第一个子元素） */
 #recent-posts > #swiper_container,
